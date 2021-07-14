@@ -20,6 +20,7 @@ const db = knex({
 });
 
 const app = express();
+const DATABASE_URL = process.env.DATABASE_URL
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -32,5 +33,5 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
 app.listen(3000, ()=> {
-	console.log('app is running on port 3000');
+	console.log('app is running on port ${DATABASE_URL}');
 })
